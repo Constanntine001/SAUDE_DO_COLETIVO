@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Assets/analog-stick/analog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Mapa/Player.gd" type="Script" id=3]
 
 [node name="mapa" type="Node"]
 
+[node name="Analog" parent="." instance=ExtResource( 2 )]
+position = Vector2( 138, 485 )
+
 [node name="Player" type="Sprite" parent="."]
-position = Vector2( 136, 318 )
+position = Vector2( 135, 311 )
 texture = ExtResource( 1 )
+script = ExtResource( 3 )
+_analogPath = NodePath("../Analog")
