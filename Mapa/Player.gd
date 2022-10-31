@@ -13,5 +13,4 @@ func _process(delta):
 	
 	position.x += pSpeed * analogForce.x
 	position.y -= pSpeed * analogForce.y
-	
 	pass
