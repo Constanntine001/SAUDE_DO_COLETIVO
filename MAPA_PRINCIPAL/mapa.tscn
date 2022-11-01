@@ -18,6 +18,7 @@ radius = 55.0364
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 240, 428 )
 current = true
+zoom = Vector2( 5, 5 )
 script = ExtResource( 5 )
 _playerPath = NodePath("../Player")
 camOffset = Vector2( 0, -110 )
