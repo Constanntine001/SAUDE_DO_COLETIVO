@@ -1,17 +1,24 @@
 extends Panel
 
-# Called when the node enters the scene tree for the first time.
+# Painel de interação com NPCs e minijogos
+
+signal InvertAnalogState
+
+# Ao iniciar a cena fica invisivel
 func _ready():
 	visible = false
-	pass # Replace with function body.
 
+# Quando jogador entra na área da mãe este painel aparece
 func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	visible = true
-	var dialog = Dialogic.start("test")
-	add_child(dialog)
-	pass # Replace with function body.
 
-
+#Ao sair da área da mãe o painel desaparece
 func _on_Area2D_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	visible = false
-	pass # Replace with function body.
+
+# Quando o botão de interação da mãe é clicado painel interativo desaparece
+# e analog desaparece e é desativado
+func _on_Button_pressed():
+	visible = false
+	emit_signal("InvertAnalogState") # Emite sinal para o Analog se desligar ou ligar
+	

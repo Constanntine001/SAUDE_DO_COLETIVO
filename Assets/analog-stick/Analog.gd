@@ -5,6 +5,8 @@ export var _isDynamicallyShowing = false
 export var _listenerNodePath = ""
 export var _name = ""
 
+var enabled = true
+
 var ball
 var bg 
 var animation_player
@@ -41,18 +43,19 @@ func get_force():
 	return currentForce
 	
 func _input(event):
-	var incomingPointer = extractPointerIdx(event)
-	if incomingPointer == INACTIVE_IDX:
-		return
-	
-	if need2ChangeActivePointer(event):
-		if (currentPointerIDX != incomingPointer) and event.is_pressed():
-			currentPointerIDX = incomingPointer;
-			showAtPos(Vector2(event.position.x, event.position.y));
+	if enabled:
+		var incomingPointer = extractPointerIdx(event)
+		if incomingPointer == INACTIVE_IDX:
+			return
+		
+		if need2ChangeActivePointer(event):
+			if (currentPointerIDX != incomingPointer) and event.is_pressed():
+				currentPointerIDX = incomingPointer;
+				showAtPos(Vector2(event.position.x, event.position.y));
 
-	var theSamePointer = currentPointerIDX == incomingPointer
-	if isActive() and theSamePointer:
-		process_input(event)
+		var theSamePointer = currentPointerIDX == incomingPointer
+		if isActive() and theSamePointer:
+			process_input(event)
 
 func need2ChangeActivePointer(event): #touch down inside analog
 	var mouseButton = event is InputEventMouseButton
@@ -148,3 +151,9 @@ func update_listnerNode():
 		_listenerNodePath = get_node(_listenerNodePath)
 	elif _listenerNodePath=="":
 		_listenerNodePath = null
+
+
+func _on_INTERACTION_PANEL_InvertAnalogState():
+	enabled = !enabled
+	visible = !visible
+	pass # Replace with function body.
