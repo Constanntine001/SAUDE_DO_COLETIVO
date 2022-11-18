@@ -1,7 +1,6 @@
 extends Panel
 
 # Painel de interação com NPCs e minijogos
-
 signal InvertAnalogState
 
 # Ao iniciar a cena fica invisivel
