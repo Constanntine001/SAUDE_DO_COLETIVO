@@ -84,6 +84,10 @@ config/name="Saude Do Coletivo"
 run/main_scene="res://MAPA_PRINCIPAL/mapa.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameManager="*res://GameManager.gd"
+
 [display]
 
 window/size/width=480

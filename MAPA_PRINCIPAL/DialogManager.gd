@@ -28,11 +28,13 @@ func SetaFalas():
 	GrupoDialogo["animais"].append(Fala.new("Laura", "Oi Filho!", sprite_mae))
 	GrupoDialogo["animais"].append(Fala.new("player", "Oi Mãe!", sprite_filho))
 	GrupoDialogo["animais"].append(Fala.new("Laura", "Vai cuidar do gatinho!", sprite_mae))
-	GrupoDialogo["animais"].append(Fala.new("player", "Não quero!", sprite_mae))
+	GrupoDialogo["animais"].append(Fala.new("player", "Não quero!", sprite_filho))
 	GrupoDialogo["animais"].append(Fala.new("Laura", "Não quero saber!", sprite_mae))
-	GrupoDialogo["animais"].append(Fala.new("player", "Mas mãeeee!", sprite_mae))
+	GrupoDialogo["animais"].append(Fala.new("player", "Mas mãeeee!", sprite_filho))
 	GrupoDialogo["animais"].append(Fala.new("Laura", "Não quero saber!!!!", sprite_mae))
-	GrupoDialogo["animais"].append(Fala.new("player", "Ta bom kk!", sprite_mae))
+	GrupoDialogo["animais"].append(Fala.new("player", "Ta bom kk!", sprite_filho))
+	
+	
 	
 	GrupoDialogo["nutricao"].append(Fala.new("Laura", "Vai comer mlk!", sprite_mae))
 	GrupoDialogo["nutricao"].append(Fala.new("player", "Ta bom caralho!", sprite_mae))
