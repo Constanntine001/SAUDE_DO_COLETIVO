@@ -1,14 +1,19 @@
 extends Node
 
-var objective
+var nomeJogador = "Robinho" # Jogador vai selecionar o proprio nome no ínicio do game
+var tipoSprite = false # Se o Jogador selecionou o tipo de player A ou B
 
+enum TipoObjetivo {intro_animais, animais, animais_nutricao, nutricao, nutricao_livre, livre} # Lista de objetivos do jogo
+var objetivo = TipoObjetivo.intro_animais
 
-# Called when the node enters the scene tree for the first time.
+func ProxObjetivo():
+	objetivo += 1
+	pass
+
+func FinalizaFala():
+	# Caso a fala não for uma fala de Loop aumenta para entrar na fala de loop	
+	if !(objetivo == 1 || objetivo == 3 || objetivo == 5):
+		objetivo += 1
+		
 func _ready():
-	objective = "animais"
-	print(objective)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	print(objetivo)

@@ -1,63 +1,57 @@
 extends Control
 
+class Personagem:
+	var nome
+	var img
+	
+	func _init(i_nome, i_img):
+		nome = i_nome
+		img = i_img
+
 class Fala:
 	var personagem
 	var fala
-	var img
 	
-	func _init(i_personagem, i_fala, i_img):
+	func _init(i_personagem, i_fala):
 		personagem = i_personagem
 		fala = i_fala
-		img = i_img
-		
-		
 
-enum TipoGrupoDialogo {animais, nutricao, livre}
-var GrupoDialogo = {"animais": [], "nutricao": [], "livre": []}
-var GrupoDialogoAtual = TipoGrupoDialogo.animais
+var dialogos = {"intro_animais": [], "animais": [], "animais_nutricao": [], "nutricao": [], "nutricao_livre": [], "livre": []}
 var FalaAtual = -1
 
 signal fechar_dialogo
 
+func AdicionaFalas(grupo, personagem, fala):
+	dialogos[grupo].append(Fala.new(personagem, fala))
+	pass
+	
+# Função que monta todas as falas do game
 func SetaFalas():
-	
-	var sprite_mae = load("res://MAPA_PRINCIPAL/mae_sprites/Laura.png")
-	var sprite_filho = load("res://icon.png")
-	
-	# Falas Animais
-	GrupoDialogo["animais"].append(Fala.new("Laura", "Oi Filho!", sprite_mae))
-	GrupoDialogo["animais"].append(Fala.new("player", "Oi Mãe!", sprite_filho))
-	GrupoDialogo["animais"].append(Fala.new("Laura", "Vai cuidar do gatinho!", sprite_mae))
-	GrupoDialogo["animais"].append(Fala.new("player", "Não quero!", sprite_filho))
-	GrupoDialogo["animais"].append(Fala.new("Laura", "Não quero saber!", sprite_mae))
-	GrupoDialogo["animais"].append(Fala.new("player", "Mas mãeeee!", sprite_filho))
-	GrupoDialogo["animais"].append(Fala.new("Laura", "Não quero saber!!!!", sprite_mae))
-	GrupoDialogo["animais"].append(Fala.new("player", "Ta bom kk!", sprite_filho))
-	
-	
-	
-	GrupoDialogo["nutricao"].append(Fala.new("Laura", "Vai comer mlk!", sprite_mae))
-	GrupoDialogo["nutricao"].append(Fala.new("player", "Ta bom caralho!", sprite_mae))
-	
-	GrupoDialogo["livre"].append(Fala.new("Laura", "Pd brincar agora otario", sprite_mae))
-	GrupoDialogo["livre"].append(Fala.new("player", "Fecho entao maluco!", sprite_mae))
+	var mae = Personagem.new("Laura", load("res://MAPA_PRINCIPAL/mae_sprites/Laura.png"))
+	var player = Personagem.new(GameManager.nomeJogador, load("res://icon.png"))
 
+	AdicionaFalas("intro_animais", mae, "Oi Filho")
+	AdicionaFalas("intro_animais", mae, "Vai cuidar do gatinho por favor")
+	AdicionaFalas("intro_animais", player, "Ok mãe, te amo")
+	
+	AdicionaFalas("animais", mae, "Filho, já te disse, vai cuidar do gatinho!")
+	AdicionaFalas("animais", player, "Ok mae estou indo!")
+	
+	
 func _ready():
 	visible = false
 	SetaFalas()
 	
-func _process(delta):
-	pass
-
 func ProxFala():
 	FalaAtual += 1
-	if FalaAtual < GrupoDialogo[TipoGrupoDialogo.keys()[GrupoDialogoAtual]].size():
-		$BAR_DOWN/SPRITE_PERSONAGEM.texture = GrupoDialogo[TipoGrupoDialogo.keys()[GrupoDialogoAtual]][FalaAtual].img
-		$BAR_DOWN/DialogText.text = GrupoDialogo[TipoGrupoDialogo.keys()[GrupoDialogoAtual]][FalaAtual].fala
+	if FalaAtual < dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]].size():
+		$BAR_DOWN/SPRITE_PERSONAGEM.texture = dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]][FalaAtual].personagem.img
+		$BAR_DOWN/DialogText.text = dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]][FalaAtual].fala
+		$BAR_DOWN/NomePersonagem.text = dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]][FalaAtual].personagem.nome
 	else:
-		FalaAtual = -1
-		GrupoDialogoAtual += 1
-		get_parent().get_node("INTERACTION_PANEL").emit_signal("InvertAnalogState")
+		GameManager.FinalizaFala()
+		FalaAtual = -1 # Reseta o contador de falas
+		get_parent().get_node("INTERACTION_PANEL").emit_signal("InvertAnalogState") # Desliga o sistema de dialogo
 
 # Quando o botão "Falar com a mãe" é chamado
 func _on_INTERACTION_PANEL_InvertAnalogState():
