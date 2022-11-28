@@ -67,14 +67,15 @@ func ProxFala():
 	else:
 		GameManager.FinalizaFala()
 		FalaAtual = -1 # Reseta o contador de falas
+		get_parent().get_node("INTERACTION_PANEL").emit_signal("InvertDialogState")
 		get_parent().get_node("INTERACTION_PANEL").emit_signal("InvertAnalogState") # Desliga o sistema de dialogo
 
-# Quando o botão "Falar com a mãe" é chamado
-func _on_INTERACTION_PANEL_InvertAnalogState():
+func _on_PROX_FALA_pressed():
+	ProxFala()
+	pass # Replace with function body.
+
+func _on_INTERACTION_PANEL_InvertDialogState():
 	if visible == false:
 		ProxFala()
 	visible = !visible
-	
-func _on_PROX_FALA_pressed():
-	ProxFala()
 	pass # Replace with function body.
