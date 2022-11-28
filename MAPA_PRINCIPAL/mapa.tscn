@@ -51,7 +51,7 @@ margin_bottom = 856.0
 [node name="NomePersonagem" type="RichTextLabel" parent="CanvasLayer/DialogManager/BAR_DOWN"]
 margin_left = 15.0
 margin_top = 11.0
-margin_right = 471.0
+margin_right = 474.0
 margin_bottom = 24.0
 text = "Haro!"
 

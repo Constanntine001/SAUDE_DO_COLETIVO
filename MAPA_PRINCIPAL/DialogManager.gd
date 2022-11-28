@@ -37,7 +37,23 @@ func SetaFalas():
 	AdicionaFalas("animais", mae, "Filho, já te disse, vai cuidar do gatinho!")
 	AdicionaFalas("animais", player, "Ok mae estou indo!")
 	
+	AdicionaFalas("animais_nutricao", mae, "Filho conseguiu cuidar do gatinho?")
+	AdicionaFalas("animais_nutricao", player, "Sim mae consegui")
+	AdicionaFalas("animais_nutricao", mae, "Boa, agora vai dar comida para ele")
+	AdicionaFalas("animais_nutricao", player, "Blz mae")
 	
+	AdicionaFalas("nutricao", mae, "Já alimentou o gatinho?")
+	AdicionaFalas("nutricao", player, "Ainda não")
+	AdicionaFalas("nutricao", mae, "Então vai lá")
+	AdicionaFalas("nutricao", player, "Blz")
+	
+	AdicionaFalas("nutricao_livre", mae, "Já alimentou o gatinho?")
+	AdicionaFalas("nutricao_livre", player, "Alimentei sim")
+	AdicionaFalas("nutricao_livre", mae, "Bacana, agr vc pode ir brincar")
+	
+	AdicionaFalas("livre", mae, "Está se divertindo?")
+	AdicionaFalas("livre", player, "Sim mãe")
+
 func _ready():
 	visible = false
 	SetaFalas()
