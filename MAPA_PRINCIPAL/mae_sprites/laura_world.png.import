@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chara.png-181dca215f1e35afb59ee67462f4fe43.stex"
+path="res://.import/laura_world.png-2b6f15e8c5e2e498c9b71a0ff5c4cd45.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MAPA_PRINCIPAL/player_sprites/chara.png"
-dest_files=[ "res://.import/chara.png-181dca215f1e35afb59ee67462f4fe43.stex" ]
+source_file="res://MAPA_PRINCIPAL/mae_sprites/laura_world.png"
+dest_files=[ "res://.import/laura_world.png-2b6f15e8c5e2e498c9b71a0ff5c4cd45.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

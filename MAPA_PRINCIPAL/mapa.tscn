@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/analog-stick/analog.tscn" type="PackedScene" id=2]
@@ -9,12 +9,13 @@
 [ext_resource path="res://MAPA_PRINCIPAL/DialogManager.gd" type="Script" id=7]
 [ext_resource path="res://MAPA_PRINCIPAL/interact.gd" type="Script" id=8]
 [ext_resource path="res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARA.tres" type="SpriteFrames" id=9]
+[ext_resource path="res://MAPA_PRINCIPAL/mae_sprites/laura_world.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 18.6667, 21.3333 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 55.0364
+radius = 36.9399
 
 [node name="mapa" type="Node"]
 
@@ -95,19 +96,23 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-pSpeed = 10
+pSpeed = 25
 _analogPath = NodePath("../CanvasLayer/Analog")
 
 [node name="Area2D" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2( -0.666656, 2.66669 )
 shape = SubResource( 1 )
 
 [node name="npc" type="Sprite" parent="."]
-modulate = Color( 0.168627, 0.705882, 0.0745098, 1 )
 position = Vector2( 192, 288 )
+scale = Vector2( 1.5, 1.5 )
 z_index = 4
-texture = ExtResource( 1 )
+texture = ExtResource( 10 )
+hframes = 3
+vframes = 4
+frame = 1
 script = ExtResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="npc"]

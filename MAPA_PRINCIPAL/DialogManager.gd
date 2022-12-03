@@ -3,10 +3,12 @@ extends Control
 class Personagem:
 	var nome
 	var img
+	var escalaExtra
 	
-	func _init(i_nome, i_img):
+	func _init(i_nome, i_img, i_escalaExtra:Vector2 = Vector2.ZERO):
 		nome = i_nome
 		img = i_img
+		escalaExtra = i_escalaExtra
 
 class Fala:
 	var personagem
@@ -28,7 +30,9 @@ func AdicionaFalas(grupo, personagem, fala):
 # Função que monta todas as falas do game
 func SetaFalas():
 	var mae = Personagem.new("Laura", load("res://MAPA_PRINCIPAL/mae_sprites/Laura.png"))
-	var player = Personagem.new(GameManager.nomeJogador, load("res://icon.png"))
+	
+	var PlayerPathImg = "res://MAPA_PRINCIPAL/player_sprites/chara.png" if GameManager.tipoSprite else "res://MAPA_PRINCIPAL/player_sprites/charb.png"
+	var player = Personagem.new(GameManager.nomeJogador, load(PlayerPathImg))
 
 	AdicionaFalas("intro_animais", mae, "Oi Filho")
 	AdicionaFalas("intro_animais", mae, "Vai cuidar do gatinho por favor")
