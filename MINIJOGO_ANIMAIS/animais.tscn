@@ -4,6 +4,7 @@
 script/source = "extends Button
 
 func _on_Button_pressed():
+	GameManager.ProxObjetivo()
 	get_tree().change_scene(\"res://MAPA_PRINCIPAL/mapa.tscn\")
 	pass # Replace with function body.
 "
