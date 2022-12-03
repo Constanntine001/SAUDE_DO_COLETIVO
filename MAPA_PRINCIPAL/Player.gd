@@ -27,6 +27,6 @@ func _process(delta):
 	elif analogForce.y > 0 && (abs(analogForce.y) > abs(analogForce.x)):
 		play("WALK_NORTH")
 	
-	position.x += pSpeed * analogForce.x
-	position.y -= pSpeed * analogForce.y
+	position.x += pSpeed * analogForce.x * delta * 10
+	position.y -= pSpeed * analogForce.y * delta * 10
 	pass
