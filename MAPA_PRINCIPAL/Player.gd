@@ -6,7 +6,12 @@ var analogNode
 
 func _ready():
 	analogNode = get_node(_analogPath)
-	pass
+	
+	# Da load em qual personagem foi escolhido pelo player
+	if GameManager.tipoSprite:
+		frames = load("res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARA.tres")
+	else:
+		frames = load("res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARB.tres")
 
 func _process(delta):
 	var analogForce = analogNode.get_force()
