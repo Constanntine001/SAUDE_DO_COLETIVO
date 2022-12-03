@@ -95,7 +95,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-pSpeed = 2
+pSpeed = 10
 _analogPath = NodePath("../CanvasLayer/Analog")
 
 [node name="Area2D" type="Area2D" parent="Player"]
