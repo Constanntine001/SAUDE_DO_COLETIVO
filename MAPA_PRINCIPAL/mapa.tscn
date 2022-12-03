@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/analog-stick/analog.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://MAPA_PRINCIPAL/Panel.gd" type="Script" id=6]
 [ext_resource path="res://MAPA_PRINCIPAL/DialogManager.gd" type="Script" id=7]
 [ext_resource path="res://MAPA_PRINCIPAL/interact.gd" type="Script" id=8]
+[ext_resource path="res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARB.tres" type="SpriteFrames" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -83,11 +84,18 @@ script = ExtResource( 5 )
 _playerPath = NodePath("../Player")
 camOffset = Vector2( 0, -110 )
 
-[node name="Player" type="Sprite" parent="."]
-position = Vector2( 240, 544 )
+[node name="Player" type="AnimatedSprite" parent="."]
+position = Vector2( 222, 549 )
+scale = Vector2( 1.5, 1.5 )
 z_index = 5
-texture = ExtResource( 1 )
+frames = ExtResource( 9 )
+animation = "IDLE"
+playing = true
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+pSpeed = 2
 _analogPath = NodePath("../CanvasLayer/Analog")
 
 [node name="Area2D" type="Area2D" parent="Player"]
