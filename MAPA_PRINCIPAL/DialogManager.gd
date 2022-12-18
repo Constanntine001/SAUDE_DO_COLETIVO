@@ -5,7 +5,7 @@ class Personagem:
 	var img
 	var escalaExtra
 	
-	func _init(i_nome, i_img, i_escalaExtra:Vector2 = Vector2.ZERO):
+	func _init(i_nome, i_img, i_escalaExtra = 1):
 		nome = i_nome
 		img = i_img
 		escalaExtra = i_escalaExtra
@@ -23,6 +23,8 @@ var FalaAtual = -1
 
 signal fechar_dialogo
 
+var spriteEscalaOriginal
+
 func AdicionaFalas(grupo, personagem, fala):
 	dialogos[grupo].append(Fala.new(personagem, fala))
 	pass
@@ -32,7 +34,7 @@ func SetaFalas():
 	var mae = Personagem.new("Laura", load("res://MAPA_PRINCIPAL/mae_sprites/Laura.png"))
 	
 	var PlayerPathImg = "res://MAPA_PRINCIPAL/player_sprites/chara.png" if GameManager.tipoSprite else "res://MAPA_PRINCIPAL/player_sprites/charb.png"
-	var player = Personagem.new(GameManager.nomeJogador, load(PlayerPathImg))
+	var player = Personagem.new(GameManager.nomeJogador, load(PlayerPathImg), 10)
 
 	AdicionaFalas("intro_animais", mae, "Oi Filho")
 	AdicionaFalas("intro_animais", mae, "Vai cuidar do gatinho por favor")
@@ -60,12 +62,15 @@ func SetaFalas():
 
 func _ready():
 	visible = false
+	spriteEscalaOriginal = $BAR_DOWN/SPRITE_PERSONAGEM.scale
 	SetaFalas()
 	
 func ProxFala():
 	FalaAtual += 1
 	if FalaAtual < dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]].size():
 		$BAR_DOWN/SPRITE_PERSONAGEM.texture = dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]][FalaAtual].personagem.img
+		var escalaExtra = dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]][FalaAtual].personagem.escalaExtra
+		$BAR_DOWN/SPRITE_PERSONAGEM.scale = Vector2(spriteEscalaOriginal.x * escalaExtra, spriteEscalaOriginal.y * escalaExtra)
 		$BAR_DOWN/DialogText.text = dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]][FalaAtual].fala
 		$BAR_DOWN/NomePersonagem.text = dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]][FalaAtual].personagem.nome
 	else:
