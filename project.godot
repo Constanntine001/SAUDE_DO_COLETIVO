@@ -81,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Saude Do Coletivo"
-run/main_scene="res://MAPA_PRINCIPAL/mapa.tscn"
+run/main_scene="res://MENU/MENU.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -94,10 +94,6 @@ window/size/width=480
 window/size/height=854
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg" )
 
 [global]
 

@@ -1,7 +1,7 @@
 extends Node
 
-var nomeJogador = "Robinho" # Jogador vai selecionar o proprio nome no ínicio do game
-var tipoSprite = true # Se o Jogador selecionou o tipo de player A ou B
+var nomeJogador = "Juliana" # Jogador vai selecionar o proprio nome no ínicio do game
+var tipoSprite = false # Se o Jogador selecionou o tipo de player A ou B
 
 var LastPlayerPos : Vector2
 
@@ -18,4 +18,4 @@ func FinalizaFala():
 		objetivo += 1
 		
 func _ready():
-	print(objetivo)
+	pass

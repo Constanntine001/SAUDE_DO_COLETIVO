@@ -33,8 +33,8 @@ func AdicionaFalas(grupo, personagem, fala):
 func SetaFalas():
 	var mae = Personagem.new("Laura", load("res://MAPA_PRINCIPAL/mae_sprites/Laura.png"))
 	
-	var PlayerPathImg = "res://MAPA_PRINCIPAL/player_sprites/chara.png" if GameManager.tipoSprite else "res://MAPA_PRINCIPAL/player_sprites/charb.png"
-	var player = Personagem.new(GameManager.nomeJogador, load(PlayerPathImg), 10)
+	var PlayerPathImg = "res://MAPA_PRINCIPAL/player_sprites/portrait_chara.png" if GameManager.tipoSprite else "res://MAPA_PRINCIPAL/player_sprites/portrait_charb.png"
+	var player = Personagem.new(GameManager.nomeJogador, load(PlayerPathImg), 50)
 
 	AdicionaFalas("intro_animais", mae, "Oi Filho")
 	AdicionaFalas("intro_animais", mae, "Vai cuidar do gatinho por favor")
@@ -66,7 +66,7 @@ func _ready():
 	SetaFalas()
 	
 func ProxFala():
-	FalaAtual += 1
+	FalaAtual += 1	
 	if FalaAtual < dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]].size():
 		$BAR_DOWN/SPRITE_PERSONAGEM.texture = dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]][FalaAtual].personagem.img
 		var escalaExtra = dialogos[GameManager.TipoObjetivo.keys()[GameManager.objetivo]][FalaAtual].personagem.escalaExtra

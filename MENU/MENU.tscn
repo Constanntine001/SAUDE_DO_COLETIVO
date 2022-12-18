@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/arial.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 33
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 31
+font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _on_BTN_PLAY_pressed():
+	get_tree().change_scene(\"res://MENU/SELECIONA_PERSONAGEM.tscn\")
+	pass # Replace with function body.
+"
+
+[node name="root" type="Node"]
+
+[node name="GAME_TITLE" type="Label" parent="."]
+margin_left = 95.0
+margin_top = 220.0
+margin_right = 376.0
+margin_bottom = 295.0
+custom_fonts/font = SubResource( 1 )
+text = "Saude do Coletivo"
+align = 1
+valign = 1
+
+[node name="BTN_PLAY" type="Button" parent="."]
+margin_left = 151.0
+margin_top = 411.0
+margin_right = 328.0
+margin_bottom = 497.0
+custom_fonts/font = SubResource( 2 )
+text = "Jogar"
+script = SubResource( 3 )
+
+[connection signal="pressed" from="BTN_PLAY" to="BTN_PLAY" method="_on_BTN_PLAY_pressed"]
