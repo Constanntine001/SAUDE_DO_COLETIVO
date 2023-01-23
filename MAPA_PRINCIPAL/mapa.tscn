@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Assets/analog-stick/analog.tscn" type="PackedScene" id=2]
@@ -11,6 +11,16 @@
 [ext_resource path="res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARA.tres" type="SpriteFrames" id=9]
 [ext_resource path="res://MAPA_PRINCIPAL/mae_sprites/laura_world.png" type="Texture" id=10]
 
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.6667, 21.3333 )
 
@@ -20,6 +30,7 @@ radius = 36.9399
 [node name="mapa" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Analog" parent="CanvasLayer" instance=ExtResource( 2 )]
 position = Vector2( 240, 744 )
@@ -65,12 +76,25 @@ margin_right = 471.0
 margin_bottom = 111.0
 text = "Haro!"
 
-[node name="PROX_FALA" type="Button" parent="CanvasLayer/DialogManager/BAR_DOWN"]
-margin_left = 396.0
-margin_top = 117.0
+[node name="LABEL_PROX_FALA" type="Label" parent="CanvasLayer/DialogManager/BAR_DOWN"]
+margin_left = 399.0
+margin_top = 106.0
 margin_right = 471.0
-margin_bottom = 138.0
-text = "Próx"
+margin_bottom = 135.0
+text = ">>"
+align = 2
+valign = 2
+
+[node name="PROX_FALA" type="Button" parent="CanvasLayer/DialogManager/BAR_DOWN"]
+margin_left = -7.0
+margin_top = -230.0
+margin_right = 484.0
+margin_bottom = 152.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
 
 [node name="SPRITE_PERSONAGEM" type="Sprite" parent="CanvasLayer/DialogManager/BAR_DOWN"]
 position = Vector2( 91, -62 )
@@ -106,7 +130,7 @@ position = Vector2( -0.666656, 2.66669 )
 shape = SubResource( 1 )
 
 [node name="npc" type="Sprite" parent="."]
-position = Vector2( 192, 288 )
+position = Vector2( 235, 370 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 4
 texture = ExtResource( 10 )
@@ -114,6 +138,9 @@ hframes = 3
 vframes = 4
 frame = 1
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="Area2D" parent="npc"]
 
@@ -143,7 +170,13 @@ shape = SubResource( 2 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 48, 48 )
 format = 1
-tile_data = PoolIntArray( 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327695, 9, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393231, 7, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0 )
+tile_data = PoolIntArray( 262142, 11, 0, 262143, 11, 0, 196608, 11, 0, 196609, 11, 0, 196610, 11, 0, 196611, 11, 0, 196612, 11, 0, 196613, 11, 0, 196614, 11, 0, 196615, 11, 0, 327678, 12, 0, 327679, 12, 0, 262144, 12, 0, 262145, 12, 0, 262146, 12, 0, 262147, 12, 0, 262148, 12, 0, 262149, 12, 0, 262150, 7, 0, 262151, 12, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327695, 9, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393231, 7, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 589822, 0, 0, 589823, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 655358, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 720894, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 786430, 0, 0, 786431, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 851966, 0, 0, 851967, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0 )
+
+[node name="top" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 48, 48 )
+format = 1
+tile_data = PoolIntArray( 262143, 13, 0, 196608, 14, 0, 196613, 17, 0, 196614, 9, 0, 196615, 20, 0, 327679, 15, 0, 262144, 16, 0, 262145, 22, 0, 262146, 23, 0, 262147, 26, 0, 262149, 18, 0, 262151, 19, 0, 327681, 21, 0, 327682, 24, 0, 327683, 25, 0 )
 
 [connection signal="InvertAnalogState" from="CanvasLayer/INTERACTION_PANEL" to="CanvasLayer/Analog" method="_on_INTERACTION_PANEL_InvertAnalogState"]
 [connection signal="InvertDialogState" from="CanvasLayer/INTERACTION_PANEL" to="CanvasLayer/DialogManager" method="_on_INTERACTION_PANEL_InvertDialogState"]
