@@ -21,7 +21,7 @@ func _on_Button_pressed():
 	elif interacaoAtual == 1:
 		match interacaoExtra:
 			"Animais":
-				get_tree().change_scene("res://MINIJOGO_ANIMAIS/animais.tscn")
+				get_tree().change_scene_to_file("res://MINIJOGO_ANIMAIS/animais.tscn")
 		
 		#emit_signal("InvertAnalogState")
 	

@@ -1,7 +1,7 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
-export var pSpeed = 5;
-export(NodePath) var _analogPath
+@export var pSpeed = 5;
+@export var _analogPath: NodePath
 var analogNode
 
 func _ready():

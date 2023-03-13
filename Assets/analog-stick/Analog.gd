@@ -1,9 +1,9 @@
 extends Node2D
 
 const INACTIVE_IDX = -1;
-export var _isDynamicallyShowing = false
-export var _listenerNodePath = ""
-export var _name = ""
+@export var _isDynamicallyShowing = false
+@export var _listenerNodePath = ""
+@export var _name = ""
 
 var enabled = true
 
@@ -118,7 +118,7 @@ func updateBallPos():
 	ballPos.y = halfSize.y * -currentForce.y #+ halfSize.y
 	ball.set_position(ballPos)
 
-func calculateForce(var x, var y):
+func calculateForce(x, y):
 	#get direction
 	currentForce.x = (x - centerPoint.x)/halfSize.x
 	currentForce.y = -(y - centerPoint.y)/halfSize.y

@@ -1,11 +1,11 @@
-extends Sprite
+extends Sprite2D
 
 signal sinal_interacao_on
 signal sinal_interacao_off
 
 enum TipoInteracao {falar, entrarFase}
-export(TipoInteracao) var interacao
-export var extra : String
+@export var interacao: TipoInteracao
+@export var extra : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

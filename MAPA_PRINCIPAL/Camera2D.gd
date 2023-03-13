@@ -1,7 +1,7 @@
 extends Camera2D
 
-export(NodePath) var _playerPath
-export(Vector2) var camOffset
+@export var _playerPath: NodePath
+@export var camOffset: Vector2
 
 var playerNode
 

@@ -5,7 +5,7 @@ class Personagem:
 	var img
 	var escalaExtra
 	
-	func _init(i_nome, i_img, i_escalaExtra = 1):
+	func _init(i_nome,i_img,i_escalaExtra = 1):
 		nome = i_nome
 		img = i_img
 		escalaExtra = i_escalaExtra
@@ -14,7 +14,7 @@ class Fala:
 	var personagem
 	var fala
 	
-	func _init(i_personagem, i_fala):
+	func _init(i_personagem,i_fala):
 		personagem = i_personagem
 		fala = i_fala
 

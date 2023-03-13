@@ -5,17 +5,17 @@ script/source = "extends Button
 
 func _on_Button_pressed():
 	GameManager.ProxObjetivo()
-	get_tree().change_scene(\"res://MAPA_PRINCIPAL/mapa.tscn\")
+	get_tree().change_scene_to_file(\"res://MAPA_PRINCIPAL/mapa.tscn\")
 	pass # Replace with function body.
 "
 
 [node name="root" type="Node"]
 
 [node name="Button" type="Button" parent="."]
-margin_left = 163.0
-margin_top = 340.0
-margin_right = 313.0
-margin_bottom = 444.0
+offset_left = 163.0
+offset_top = 340.0
+offset_right = 313.0
+offset_bottom = 444.0
 script = SubResource( 1 )
 
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
