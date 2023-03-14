@@ -1,16 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://jdy7ermt7awm"]
 
-[ext_resource path="res://fonts/arial.ttf" type="FontFile" id=1]
-
-[sub_resource type="FontFile" id=1]
-size = 33
-font_data = ExtResource( 1 )
-
-[sub_resource type="FontFile" id=2]
-size = 31
-font_data = ExtResource( 1 )
-
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id="3"]
 script/source = "extends Button
 
 func _on_BTN_PLAY_pressed():
@@ -25,18 +15,14 @@ offset_left = 95.0
 offset_top = 220.0
 offset_right = 376.0
 offset_bottom = 295.0
-custom_fonts/font = SubResource( 1 )
 text = "Saude do Coletivo"
-align = 1
-valign = 1
 
 [node name="BTN_PLAY" type="Button" parent="."]
 offset_left = 151.0
 offset_top = 411.0
 offset_right = 328.0
 offset_bottom = 497.0
-custom_fonts/font = SubResource( 2 )
 text = "Jogar"
-script = SubResource( 3 )
+script = SubResource("3")
 
 [connection signal="pressed" from="BTN_PLAY" to="BTN_PLAY" method="_on_BTN_PLAY_pressed"]

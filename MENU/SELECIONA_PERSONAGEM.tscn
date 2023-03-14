@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://c4vpkypeg4uhj"]
 
-[ext_resource path="res://MAPA_PRINCIPAL/player_sprites/portrait_charb.png" type="Texture2D" id=1]
-[ext_resource path="res://MAPA_PRINCIPAL/player_sprites/portrait_chara.png" type="Texture2D" id=2]
-[ext_resource path="res://fonts/arial.ttf" type="FontFile" id=3]
+[ext_resource type="Texture2D" uid="uid://d1jrlxmtx36f7" path="res://MAPA_PRINCIPAL/player_sprites/portrait_charb.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d0r5oxbaigy1p" path="res://MAPA_PRINCIPAL/player_sprites/portrait_chara.png" id="2"]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id="1"]
 script/source = "extends Button
 
 
@@ -25,12 +24,12 @@ func _ready():
 
 
 func _on_BTN_SELECT_CHARB_pressed():
-	pressed = false
+	button_pressed = false
 	GameManager.tipoSprite = false
 	pass # Replace with function body.
 "
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id="2"]
 script/source = "extends Button
 
 
@@ -50,16 +49,12 @@ func _ready():
 
 
 func _on_BTN_SELECT_CHARA_pressed():
-	pressed = false
+	button_pressed = false
 	GameManager.tipoSprite = true
 	pass # Replace with function body.
 "
 
-[sub_resource type="FontFile" id=3]
-size = 28
-font_data = ExtResource( 3 )
-
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id="4"]
 script/source = "extends Button
 
 func _on_LEDIT_INSERE_NOME_text_changed(new_text):
@@ -80,10 +75,10 @@ offset_top = 173.0
 offset_right = 229.0
 offset_bottom = 460.0
 toggle_mode = true
-icon = ExtResource( 2 )
+icon = ExtResource("2")
 icon_alignment = 1
 expand_icon = true
-script = SubResource( 1 )
+script = SubResource("1")
 
 [node name="BTN_SELECT_CHARB" type="Button" parent="."]
 offset_left = 251.0
@@ -91,10 +86,10 @@ offset_top = 173.0
 offset_right = 464.0
 offset_bottom = 460.0
 toggle_mode = true
-icon = ExtResource( 1 )
+icon = ExtResource("1")
 icon_alignment = 1
 expand_icon = true
-script = SubResource( 2 )
+script = SubResource("2")
 
 [node name="LEDIT_INSERE_NOME" type="LineEdit" parent="."]
 offset_left = 108.0
@@ -107,9 +102,8 @@ offset_left = 162.0
 offset_top = 680.0
 offset_right = 302.0
 offset_bottom = 738.0
-custom_fonts/font = SubResource( 3 )
 text = "Jogar"
-script = SubResource( 4 )
+script = SubResource("4")
 
 [connection signal="pressed" from="BTN_SELECT_CHARA" to="BTN_SELECT_CHARB" method="_on_BTN_SELECT_CHARA_pressed"]
 [connection signal="pressed" from="BTN_SELECT_CHARB" to="BTN_SELECT_CHARA" method="_on_BTN_SELECT_CHARB_pressed"]

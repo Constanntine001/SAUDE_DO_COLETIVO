@@ -1,5 +1,7 @@
-res://addons/dialogic/Localization/dialogic.zh_CN.translation
-res://addons/dialogic/Localization/dialogic.en.translation
-res://addons/dialogic/Localization/dialogic.es.translation
-res://addons/dialogic/Localization/dialogic.fr.translation
-res://addons/dialogic/Localization/dialogic.de.translation
+res://default_env.tres
+res://MINIJOGO_ANIMAIS/animais.tscn
+res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARA.tres
+res://MENU/MENU.tscn
+res://MENU/SELECIONA_PERSONAGEM.tscn
+res://MAPA_PRINCIPAL/mapa.tscn
+res://MINIJOGO_ANIMAIS/MovementScript.gd

@@ -37,7 +37,7 @@ func _ready():
 	_isDynamicallyShowing = _isDynamicallyShowing and parent is Control
 	if _isDynamicallyShowing:
 		modulate.a = 0;
-#		hide()
+#		AnalogHide(
 
 func get_force():
 	return currentForce
@@ -68,7 +68,7 @@ func need2ChangeActivePointer(event): #touch down inside analog
 			var lenght = (get_global_position() - Vector2(event.position.x, event.position.y)).length_squared();
 			return lenght < squaredHalfSizeLenght
 	else:
-	 return false
+		return false
 
 func isActive():
 	return currentPointerIDX != INACTIVE_IDX
@@ -101,7 +101,7 @@ func reset():
 	calculateForce(0, 0)
 
 	if _isDynamicallyShowing:
-		hide()
+		AnalogHide()
 	else:
 		updateBallPos()
 
@@ -110,7 +110,7 @@ func showAtPos(pos):
 		animation_player.play("alpha_in", 0.2)
 		self.set_global_position(pos)
 	
-func hide():
+func AnalogHide():
 	animation_player.play("alpha_out", 0.2) 
 
 func updateBallPos():

@@ -9,9 +9,9 @@ func _ready():
 	
 	# Da load em qual personagem foi escolhido pelo player
 	if GameManager.tipoSprite:
-		frames = load("res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARA.tres")
+		sprite_frames = load("res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARA.tres")
 	else:
-		frames = load("res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARB.tres")
+		sprite_frames = load("res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARB.tres")
 
 func _process(delta):
 	var analogForce = analogNode.get_force()

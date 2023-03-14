@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://ddwl5xmrm7xfl"]
 
-[sub_resource type="GDScript" id=1]
+[ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/MovementScript.gd" id="1_j7hwa"]
+
+[sub_resource type="GDScript" id="1"]
 script/source = "extends Button
 
 func _on_Button_pressed():
@@ -9,13 +11,70 @@ func _on_Button_pressed():
 	pass # Replace with function body.
 "
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f5b51"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mx3sq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mr4hr"]
+size = Vector2(106, 49.5593)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gneqd"]
+
 [node name="root" type="Node"]
 
-[node name="Button" type="Button" parent="."]
-offset_left = 163.0
-offset_top = 340.0
-offset_right = 313.0
-offset_bottom = 444.0
-script = SubResource( 1 )
+[node name="EXIT_BUTTON" type="Button" parent="."]
+offset_left = 31.0
+offset_top = 806.0
+offset_right = 181.0
+offset_bottom = 910.0
+script = SubResource("1")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[node name="RAT_TOY" type="Node2D" parent="."]
+position = Vector2(213, 541)
+
+[node name="Sprite2D" type="Sprite2D" parent="RAT_TOY"]
+position = Vector2(58, 17)
+scale = Vector2(20.5, 29.5)
+texture = SubResource("PlaceholderTexture2D_f5b51")
+
+[node name="PEPINO" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(167, 276)
+scale = Vector2(1, 0.988716)
+metadata/_edit_group_ = true
+metadata/velocidade = 0.3
+
+[node name="Sprite2D" type="Sprite2D" parent="PEPINO"]
+position = Vector2(1.00001, 9.69647)
+scale = Vector2(106, 49.3831)
+texture = SubResource("PlaceholderTexture2D_mx3sq")
+
+[node name="Area2D" type="Area2D" parent="PEPINO"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PEPINO/Area2D"]
+position = Vector2(1.00002, 9.60831)
+scale = Vector2(1, 0.999999)
+shape = SubResource("RectangleShape2D_mr4hr")
+
+[node name="MovementScript" type="Node" parent="PEPINO"]
+script = ExtResource("1_j7hwa")
+
+[node name="Timer" type="Timer" parent="PEPINO/MovementScript"]
+wait_time = 6.0
+autostart = true
+
+[node name="MovementArea" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.109804, 0.443137, 0.411765, 0.2)
+z_index = -1337
+position = Vector2(17, 22)
+scale = Vector2(447, 702)
+texture = SubResource("PlaceholderTexture2D_gneqd")
+centered = false
+
+[connection signal="pressed" from="EXIT_BUTTON" to="EXIT_BUTTON" method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="PEPINO/Area2D" to="PEPINO/MovementScript" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="PEPINO/Area2D" to="PEPINO/MovementScript" method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="PEPINO/MovementScript/Timer" to="PEPINO/MovementScript" method="_on_timer_timeout" flags=18]
