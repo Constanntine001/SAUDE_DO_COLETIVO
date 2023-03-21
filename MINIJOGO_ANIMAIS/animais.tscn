@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddwl5xmrm7xfl"]
+[gd_scene load_steps=8 format=3 uid="uid://ddwl5xmrm7xfl"]
 
 [ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/MovementScript.gd" id="1_j7hwa"]
+[ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/ActionScript.gd" id="2_65xih"]
 
 [sub_resource type="GDScript" id="1"]
 script/source = "extends Button
@@ -30,6 +31,7 @@ offset_bottom = 910.0
 script = SubResource("1")
 
 [node name="RAT_TOY" type="Node2D" parent="."]
+visible = false
 position = Vector2(213, 541)
 
 [node name="Sprite2D" type="Sprite2D" parent="RAT_TOY"]
@@ -38,7 +40,6 @@ scale = Vector2(20.5, 29.5)
 texture = SubResource("PlaceholderTexture2D_f5b51")
 
 [node name="PEPINO" type="Node2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(167, 276)
 scale = Vector2(1, 0.988716)
 metadata/_edit_group_ = true
@@ -50,7 +51,6 @@ scale = Vector2(106, 49.3831)
 texture = SubResource("PlaceholderTexture2D_mx3sq")
 
 [node name="Area2D" type="Area2D" parent="PEPINO"]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PEPINO/Area2D"]
 position = Vector2(1.00002, 9.60831)
@@ -59,14 +59,17 @@ shape = SubResource("RectangleShape2D_mr4hr")
 
 [node name="MovementScript" type="Node" parent="PEPINO"]
 script = ExtResource("1_j7hwa")
+velocidadeDeMovimento = 1000.0
 
 [node name="Timer" type="Timer" parent="PEPINO/MovementScript"]
 wait_time = 6.0
 autostart = true
 
+[node name="ActionScript" type="Node" parent="PEPINO"]
+script = ExtResource("2_65xih")
+
 [node name="MovementArea" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 modulate = Color(0.109804, 0.443137, 0.411765, 0.2)
 z_index = -1337
 position = Vector2(17, 22)
