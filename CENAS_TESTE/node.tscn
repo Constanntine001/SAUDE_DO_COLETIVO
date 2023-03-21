@@ -1,34 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://db7o6xa54j1qu"]
+[gd_scene load_steps=2 format=3 uid="uid://db7o6xa54j1qu"]
 
 [sub_resource type="GDScript" id="GDScript_giqhj"]
 script/source = "extends Node
 
-var PazETranquilidadeGracasAoSenhor = 10
-
-func TesteAwait():
-	print(\"Haro!\")
-	await get_tree().create_timer(4).timeout
-	$Sprite2D.queue_free()
-
-FUNC 
-
 func _ready():
-	TesteAwait()
+	var teste = %Sprite2D
+	if teste == null:
+		print(\"Não existe man kk\")
+	else:
+		print(teste.name)
+	
+	
 	pass
 
-
-
-
-func _process(delta):
-	pass
 "
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vyuwr"]
 
 [node name="Node" type="Node"]
 script = SubResource("GDScript_giqhj")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(201, 306)
-scale = Vector2(74.8291, 74.8291)
-texture = SubResource("PlaceholderTexture2D_vyuwr")

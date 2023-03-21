@@ -12,14 +12,14 @@ func _on_Button_pressed():
 	pass # Replace with function body.
 "
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gneqd"]
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f5b51"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mx3sq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mr4hr"]
 size = Vector2(106, 49.5593)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gneqd"]
 
 [node name="root" type="Node"]
 
@@ -30,12 +30,22 @@ offset_right = 181.0
 offset_bottom = 910.0
 script = SubResource("1")
 
-[node name="RAT_TOY" type="Node2D" parent="."]
-visible = false
-position = Vector2(213, 541)
+[node name="MovementArea" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.109804, 0.443137, 0.411765, 0)
+z_index = -1337
+position = Vector2(17, 22)
+scale = Vector2(447, 702)
+texture = SubResource("PlaceholderTexture2D_gneqd")
+centered = false
+metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RAT_TOY"]
-position = Vector2(58, 17)
+[node name="BRINQUEDO_RATO" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(272, 533)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BRINQUEDO_RATO"]
 scale = Vector2(20.5, 29.5)
 texture = SubResource("PlaceholderTexture2D_f5b51")
 
@@ -43,7 +53,6 @@ texture = SubResource("PlaceholderTexture2D_f5b51")
 position = Vector2(167, 276)
 scale = Vector2(1, 0.988716)
 metadata/_edit_group_ = true
-metadata/velocidade = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="PEPINO"]
 position = Vector2(1.00001, 9.69647)
@@ -59,7 +68,7 @@ shape = SubResource("RectangleShape2D_mr4hr")
 
 [node name="MovementScript" type="Node" parent="PEPINO"]
 script = ExtResource("1_j7hwa")
-velocidadeDeMovimento = 1000.0
+velocidadeDeMovimentoPadrao = 220.0
 
 [node name="Timer" type="Timer" parent="PEPINO/MovementScript"]
 wait_time = 6.0
@@ -67,15 +76,6 @@ autostart = true
 
 [node name="ActionScript" type="Node" parent="PEPINO"]
 script = ExtResource("2_65xih")
-
-[node name="MovementArea" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-modulate = Color(0.109804, 0.443137, 0.411765, 0.2)
-z_index = -1337
-position = Vector2(17, 22)
-scale = Vector2(447, 702)
-texture = SubResource("PlaceholderTexture2D_gneqd")
-centered = false
 
 [connection signal="pressed" from="EXIT_BUTTON" to="EXIT_BUTTON" method="_on_Button_pressed"]
 [connection signal="mouse_entered" from="PEPINO/Area2D" to="PEPINO/MovementScript" method="_on_area_2d_mouse_entered"]

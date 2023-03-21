@@ -1,17 +1,12 @@
 extends Node
 
-#[CONSTANTES E VARIÁVEIS FIXAS]
+#[REFERÊNCIAS GERAIS]
 
 # Salva o node do pepino(gato) para movimentar ele
 @onready var pepino : Node2D = get_parent()
 
 #[==========================]
 
-#[ATRIBUTOS DO SCRIPT]
-
-@export var velocidadeDeMovimento : float = 10.0
-
-#[==========================]
 
 #[ESCOPO PegaPosicaoAleatoria()]
 
@@ -35,19 +30,24 @@ func PegaPosicaoAleatoria() -> Vector2:
 	Função e funções que fazem o pepino se mexer para algum lugar
 """
 
+@export var velocidadeDeMovimentoPadrao : float = 10.0
+var velocidadeDeMovimento = 10.0
 var seMovendo : bool = false
 var seMovePara : Vector2 = Vector2.ZERO
 
 signal finalizouMovimento
 
-func MoveGato(pos : Vector2):
+func MoveGato(pos : Vector2, input_velocidade = 0):
+	if input_velocidade > 0:
+		velocidadeDeMovimento = input_velocidade
+	else:
+		velocidadeDeMovimento = velocidadeDeMovimentoPadrao
+	
 	seMovePara = pos
 	seMovendo = true
 	await finalizouMovimento
 	seMovendo = false
-	
-	return true
-	
+
 func _MoveGatoProcessHandler(delta):
 	if seMovendo:
 		pepino.global_position = pepino.global_position.move_toward(seMovePara, delta * velocidadeDeMovimento)
