@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr3agxegxhybe"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f5b51"]
+
+[node name="BRINQUEDO_RATO" type="Node2D"]
+position = Vector2(272, 533)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(20.5, 29.5)
+texture = SubResource("PlaceholderTexture2D_f5b51")

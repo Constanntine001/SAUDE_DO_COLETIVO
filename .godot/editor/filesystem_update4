@@ -1,9 +1,11 @@
 res://default_env.tres
 res://MINIJOGO_ANIMAIS/animais.tscn
 res://MAPA_PRINCIPAL/player_sprites/ANIM_CHARA.tres
-res://CENAS_TESTE/node.tscn
 res://MENU/MENU.tscn
 res://MENU/SELECIONA_PERSONAGEM.tscn
 res://MAPA_PRINCIPAL/mapa.tscn
-res://MINIJOGO_ANIMAIS/MovementScript.gd
-res://MINIJOGO_ANIMAIS/ActionScript.gd
+res://MINIJOGO_ANIMAIS/ArrastaItem.gd
+res://MINIJOGO_ANIMAIS/LogicaItem_Ratinho.gd
+res://MINIJOGO_ANIMAIS/RatinhoSegurando.tscn
+res://MINIJOGO_ANIMAIS/Ratinho.tscn
+res://MINIJOGO_ANIMAIS/ratinho_suspenso.tscn

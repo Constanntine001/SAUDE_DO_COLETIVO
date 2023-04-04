@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6yke2rrgjkl8"]
+
+[ext_resource type="Texture2D" uid="uid://b6s5rkx8aoi08" path="res://icon.png" id="1_5rtrx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypwop"]
+size = Vector2(22, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smf1c"]
+size = Vector2(8, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kr38d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asgf2"]
+size = Vector2(8, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kpu12"]
+
+[node name="RatinhoSuspenso" type="Node2D"]
+position = Vector2(29, 25)
+metadata/_edit_group_ = true
+
+[node name="Base" type="RigidBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
+shape = SubResource("RectangleShape2D_ypwop")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(0, 3)
+node_a = NodePath("../Base")
+node_b = NodePath("../RigidBody2D2")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(0, 19)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource("RectangleShape2D_smf1c")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+modulate = Color(0.694118, 0.407843, 0, 1)
+scale = Vector2(7.99999, 32)
+texture = SubResource("PlaceholderTexture2D_kr38d")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, 33)
+node_a = NodePath("../RigidBody2D2")
+node_b = NodePath("../RigidBody2D")
+softness = 0.36
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(0, 47)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_asgf2")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(7.99999, 32)
+texture = SubResource("PlaceholderTexture2D_kpu12")
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(0, 58)
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../RigidBody2D3")
+softness = 0.36
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(0, 75)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+shape = SubResource("RectangleShape2D_asgf2")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+modulate = Color(0.392157, 0.772549, 0.576471, 1)
+scale = Vector2(7.99999, 32)
+texture = SubResource("PlaceholderTexture2D_kpu12")
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="."]
+position = Vector2(0, 90)
+node_a = NodePath("../RigidBody2D3")
+node_b = NodePath("../Ratinho")
+softness = 0.36
+
+[node name="Ratinho" type="RigidBody2D" parent="."]
+position = Vector2(0, 94)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ratinho"]
+position = Vector2(0, 6.25)
+scale = Vector2(0.367187, 0.367187)
+texture = ExtResource("1_5rtrx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ratinho"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_ypwop")
