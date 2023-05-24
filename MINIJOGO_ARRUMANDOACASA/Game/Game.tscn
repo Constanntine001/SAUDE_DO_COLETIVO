@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6ro5uo3jgvrk"]
+
+[ext_resource type="Script" path="res://MINIJOGO_ARRUMANDOACASA/Game/Game.gd" id="1_k0bqk"]
+[ext_resource type="Script" path="res://MINIJOGO_ARRUMANDOACASA/Game/Camera_game.gd" id="2_gc377"]
+[ext_resource type="Texture2D" uid="uid://f8iwucwt8e3n" path="res://MINIJOGO_ARRUMANDOACASA/Game/Images/Bedroom.png" id="3_vkqr2"]
+[ext_resource type="Texture2D" uid="uid://dxlkbms3focv3" path="res://MINIJOGO_ARRUMANDOACASA/Game/Images/Kitchen.png" id="4_14yf7"]
+[ext_resource type="Texture2D" uid="uid://cmp60cpmadwjl" path="res://MINIJOGO_ARRUMANDOACASA/Game/Images/Livingroom_Day.png" id="5_voabg"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_k0bqk")
+
+[node name="Camera_game" type="Camera2D" parent="."]
+position = Vector2(240, 425)
+script = ExtResource("2_gc377")
+
+[node name="Game_ui" type="CanvasLayer" parent="Camera_game"]
+
+[node name="Button_R" type="TextureButton" parent="Camera_game/Game_ui"]
+offset_left = 440.0
+offset_top = 400.0
+offset_right = 480.0
+offset_bottom = 440.0
+
+[node name="Button_L" type="TextureButton" parent="Camera_game/Game_ui"]
+offset_top = 400.0
+offset_right = 40.0
+offset_bottom = 440.0
+
+[node name="Sala_bkg" type="TextureRect" parent="."]
+offset_right = 480.0
+offset_bottom = 850.0
+texture = ExtResource("5_voabg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Cozinha_bkg" type="TextureRect" parent="."]
+offset_left = 1000.0
+offset_right = 1480.0
+offset_bottom = 850.0
+texture = ExtResource("4_14yf7")
+
+[node name="Quarto_bkg" type="TextureRect" parent="."]
+offset_left = 500.0
+offset_right = 980.0
+offset_bottom = 850.0
+texture = ExtResource("3_vkqr2")
+
+[connection signal="button_down" from="Camera_game/Game_ui/Button_R" to="Camera_game" method="_on_button_r_button_down"]
+[connection signal="button_down" from="Camera_game/Game_ui/Button_L" to="Camera_game" method="_on_button_l_button_down"]
