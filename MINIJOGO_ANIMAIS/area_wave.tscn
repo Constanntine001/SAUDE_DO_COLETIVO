@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c74vj471net1j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6v2h2"]
+radius = 56.5685
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_o75ng"]
+
+[node name="AreaWave" type="Area2D" groups=["area_wave"]]
+position = Vector2(296, 456)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6v2h2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.627451, 1, 0.407843)
+scale = Vector2(108.25, 64.25)
+texture = SubResource("PlaceholderTexture2D_o75ng")

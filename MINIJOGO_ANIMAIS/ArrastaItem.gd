@@ -50,7 +50,6 @@ func ChecaDrag(event):
 
 
 func _process(delta):
-	#print(estaDentro)
 	return 0
 
 func _input(event):

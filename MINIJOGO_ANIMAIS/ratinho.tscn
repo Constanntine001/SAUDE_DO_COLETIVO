@@ -2,7 +2,7 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f5b51"]
 
-[node name="BRINQUEDO_RATO" type="Node2D"]
+[node name="BRINQUEDO_RATO" type="Node2D" groups=["brinquedo_rato"]]
 position = Vector2(272, 533)
 metadata/_edit_group_ = true
 

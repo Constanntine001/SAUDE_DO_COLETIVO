@@ -23,8 +23,8 @@ GameManager="*res://GameManager.gd"
 
 window/size/viewport_width=480
 window/size/viewport_height=854
-window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
+window/handheld/orientation="portrait"
 
 [global]
 

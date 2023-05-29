@@ -27,8 +27,25 @@ func MovimentoAleatorio():
 """
 
 func BrincarRatoChao():
-	await MovementScript.MoveGato(%BRINQUEDO_RATO.global_position)
-	%BRINQUEDO_RATO.queue_free()
+	var brinquedoRato = get_tree().get_nodes_in_group("brinquedo_rato")[0]
+	
+	await MovementScript.MoveGato(brinquedoRato.global_position)
+	brinquedoRato.queue_free()
+
+#[==========================]
+
+#[Ação Brincar com Ratinho no Ar(wave)]
+
+"""
+	Essa ação acontece quando o jogador usa o ratinho
+	no ar
+"""
+
+func BrincarRatoWave():
+	var brinquedoRato = get_tree().get_nodes_in_group("area_wave")[0]
+	
+	await MovementScript.MoveGato(brinquedoRato.global_position)
+	brinquedoRato.queue_free()
 
 #[==========================]
 
@@ -42,12 +59,14 @@ func BrincarRatoChao():
 @export var proximaAcao : PepinoActions
 @export var tempoEsperaAcoes : Vector2 = Vector2(3, 7)
 
-enum PepinoActions {MovimentoAleatorio, BrincarRatoChao}
+enum PepinoActions {MovimentoAleatorio, BrincarRatoChao, BrincarRatoWave}
 var pepinoAcaoAtual = PepinoActions.MovimentoAleatorio
 
 func _HandlerAcoes():
-	if(%BRINQUEDO_RATO != null):
+	if(get_tree().get_nodes_in_group("brinquedo_rato").size() > 0):
 		pepinoAcaoAtual = PepinoActions.BrincarRatoChao
+	elif(get_tree().get_nodes_in_group("area_wave").size() > 0):
+		pepinoAcaoAtual = PepinoActions.BrincarRatoWave
 	else:
 		pepinoAcaoAtual = PepinoActions.MovimentoAleatorio
 
@@ -60,6 +79,8 @@ func ExecutaAcaoAtual():
 	match pepinoAcaoAtual:
 		PepinoActions.MovimentoAleatorio:
 			MovimentoAleatorio()
+		PepinoActions.BrincarRatoWave:
+			BrincarRatoWave()
 		PepinoActions.BrincarRatoChao:
 			BrincarRatoChao()
 			

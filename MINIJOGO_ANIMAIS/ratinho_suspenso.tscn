@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6yke2rrgjkl8"]
+[gd_scene load_steps=14 format=3 uid="uid://c6yke2rrgjkl8"]
 
 [ext_resource type="Texture2D" uid="uid://b6s5rkx8aoi08" path="res://icon.png" id="1_5rtrx"]
+[ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/ratinho_suspenso.gd" id="1_qwg7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypwop"]
 size = Vector2(22, 23)
@@ -15,11 +16,49 @@ size = Vector2(8, 32)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kpu12"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85do8"]
+size = Vector2(2578, 67)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hs264"]
+
+[sub_resource type="GDScript" id="GDScript_h8tjo"]
+script/source = "extends Area2D
+
+signal increaseWave
+
+func _on_body_entered(body):
+	if body.name == \"Ratinho\":
+		emit_signal(\"increaseWave\")
+	pass # Replace with function body.
+"
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dsaq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7iib"]
+size = Vector2(20, 142)
+
+[sub_resource type="GDScript" id="GDScript_xqfhb"]
+script/source = "extends Node
+
+var waveCount = 0;
+
+func increaseWave():
+	waveCount += 1
+	if waveCount >= 12:
+		get_parent().startWave()
+		waveCount = 0
+	pass
+
+"
+
 [node name="RatinhoSuspenso" type="Node2D"]
 position = Vector2(29, 25)
-metadata/_edit_group_ = true
+script = ExtResource("1_qwg7l")
 
 [node name="Base" type="RigidBody2D" parent="."]
+position = Vector2(2, -7)
+gravity_scale = 0.0
+freeze = true
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
@@ -32,6 +71,7 @@ node_b = NodePath("../RigidBody2D2")
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 position = Vector2(0, 19)
+gravity_scale = 5.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
@@ -50,6 +90,7 @@ softness = 0.36
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(0, 47)
+gravity_scale = 5.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -67,6 +108,7 @@ softness = 0.36
 
 [node name="RigidBody2D3" type="RigidBody2D" parent="."]
 position = Vector2(0, 75)
+gravity_scale = 5.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
@@ -85,6 +127,10 @@ softness = 0.36
 
 [node name="Ratinho" type="RigidBody2D" parent="."]
 position = Vector2(0, 94)
+mass = 2.75
+gravity_scale = 5.0
+max_contacts_reported = 1
+contact_monitor = true
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ratinho"]
@@ -95,3 +141,106 @@ texture = ExtResource("1_5rtrx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ratinho"]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_ypwop")
+
+[node name="ground" type="Area2D" parent="."]
+position = Vector2(1, 257)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+position = Vector2(9.5, 8.5)
+shape = SubResource("RectangleShape2D_85do8")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground"]
+visible = false
+modulate = Color(0.14902, 0.803922, 1, 1)
+position = Vector2(11, -15.5)
+scale = Vector2(536, 21)
+texture = SubResource("PlaceholderTexture2D_hs264")
+
+[node name="ground2" type="Area2D" parent="."]
+position = Vector2(-1040, -995)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground2"]
+position = Vector2(9.5, 8.5)
+shape = SubResource("RectangleShape2D_85do8")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground2"]
+visible = false
+modulate = Color(0.14902, 0.803922, 1, 1)
+position = Vector2(11, -15.5)
+scale = Vector2(536, 21)
+texture = SubResource("PlaceholderTexture2D_hs264")
+
+[node name="ground3" type="Area2D" parent="."]
+position = Vector2(1082, -584)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground3"]
+position = Vector2(-397, 8.50012)
+shape = SubResource("RectangleShape2D_85do8")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground3"]
+visible = false
+modulate = Color(0.14902, 0.803922, 1, 1)
+position = Vector2(11, -15.5)
+scale = Vector2(536, 21)
+texture = SubResource("PlaceholderTexture2D_hs264")
+
+[node name="ground4" type="Area2D" parent="."]
+position = Vector2(3, -2257)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground4"]
+position = Vector2(9.5, 8.5)
+shape = SubResource("RectangleShape2D_85do8")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground4"]
+visible = false
+modulate = Color(0.14902, 0.803922, 1, 1)
+position = Vector2(11, -15.5)
+scale = Vector2(536, 21)
+texture = SubResource("PlaceholderTexture2D_hs264")
+
+[node name="Wave Detector2" type="Area2D" parent="."]
+script = SubResource("GDScript_h8tjo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wave Detector2"]
+visible = false
+position = Vector2(-84, 53)
+scale = Vector2(37.5, 20.5)
+texture = SubResource("PlaceholderTexture2D_dsaq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wave Detector2"]
+position = Vector2(81, 53)
+shape = SubResource("RectangleShape2D_x7iib")
+
+[node name="Wave Detector3" type="Area2D" parent="."]
+script = SubResource("GDScript_h8tjo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wave Detector3"]
+position = Vector2(-84, 53)
+shape = SubResource("RectangleShape2D_x7iib")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Wave Detector3"]
+visible = false
+position = Vector2(84, 48)
+scale = Vector2(37.5, 20.5)
+texture = SubResource("PlaceholderTexture2D_dsaq2")
+
+[node name="waveCounter" type="Node" parent="."]
+script = SubResource("GDScript_xqfhb")
+
+[node name="wavePoint" type="Node2D" parent="."]
+position = Vector2(-4, 109)
+
+[connection signal="body_entered" from="ground" to="." method="_on_ground_body_entered"]
+[connection signal="body_entered" from="ground2" to="." method="_on_ground_body_entered"]
+[connection signal="body_entered" from="ground3" to="." method="_on_ground_body_entered"]
+[connection signal="body_entered" from="ground4" to="." method="_on_ground_body_entered"]
+[connection signal="body_entered" from="Wave Detector2" to="Wave Detector2" method="_on_body_entered"]
+[connection signal="increaseWave" from="Wave Detector2" to="waveCounter" method="increaseWave"]
+[connection signal="body_entered" from="Wave Detector3" to="Wave Detector3" method="_on_body_entered"]
+[connection signal="increaseWave" from="Wave Detector3" to="waveCounter" method="increaseWave"]

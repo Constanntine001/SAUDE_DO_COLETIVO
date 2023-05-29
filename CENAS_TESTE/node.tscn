@@ -4,16 +4,11 @@
 script/source = "extends Node
 
 func _ready():
-	var teste = %Sprite2D
-	if teste == null:
-		print(\"Não existe man kk\")
-	else:
-		print(teste.name)
-	
-	
-	pass
+	$nodeMassa.
 
 "
 
 [node name="Node" type="Node"]
 script = SubResource("GDScript_giqhj")
+
+[node name="nodeMassa" type="Node" parent="."]

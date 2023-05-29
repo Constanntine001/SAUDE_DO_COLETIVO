@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddwl5xmrm7xfl"]
+[gd_scene load_steps=10 format=3 uid="uid://ddwl5xmrm7xfl"]
 
 [ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/MovementScript.gd" id="1_j7hwa"]
 [ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/ActionScript.gd" id="2_65xih"]
 [ext_resource type="Texture2D" uid="uid://b6s5rkx8aoi08" path="res://icon.png" id="3_mx4c7"]
 [ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/LogicaItem_Ratinho.gd" id="5_iadnv"]
 [ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/ArrastaItem.gd" id="5_kispl"]
-[ext_resource type="PackedScene" uid="uid://c6yke2rrgjkl8" path="res://MINIJOGO_ANIMAIS/ratinho_suspenso.tscn" id="6_mvkir"]
 
 [sub_resource type="GDScript" id="1"]
 script/source = "extends Button
@@ -13,7 +12,7 @@ script/source = "extends Button
 func _on_Button_pressed():
 	GameManager.ProxObjetivo()
 	get_tree().change_scene_to_file(\"res://MAPA_PRINCIPAL/mapa.tscn\")
-	pass # Replace with function body.
+pass # Replace with function body.
 "
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gneqd"]
@@ -34,7 +33,7 @@ script = SubResource("1")
 
 [node name="MovementArea" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(0.109804, 0.443137, 0.411765, 0)
+modulate = Color(0.443137, 0, 0.156863, 0.345098)
 z_index = -1337
 position = Vector2(17, 22)
 scale = Vector2(447, 626)
@@ -104,7 +103,6 @@ script = ExtResource("5_kispl")
 
 [node name="LogicaItem" type="Node" parent="CanvasLayer/Inventario/Panel/HBoxContainer/ITEM_RATINHO"]
 script = ExtResource("5_iadnv")
-ratinhoSuspensoResource = ExtResource("6_mvkir")
 
 [connection signal="pressed" from="EXIT_BUTTON" to="EXIT_BUTTON" method="_on_Button_pressed"]
 [connection signal="mouse_entered" from="PEPINO/Area2D" to="PEPINO/MovementScript" method="_on_area_2d_mouse_entered"]
