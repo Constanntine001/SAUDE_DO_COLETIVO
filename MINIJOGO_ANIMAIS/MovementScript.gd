@@ -57,6 +57,13 @@ func _MoveGatoProcessHandler(delta):
 	
 #[=================]
 
+# [FUNÇÕES DE SEGURAR O GATINHO]
+
+
+
+
+# [============================]
+
 func _process(delta):
 	_MoveGatoProcessHandler(delta)
 	pass

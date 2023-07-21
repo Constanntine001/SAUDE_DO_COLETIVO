@@ -11,10 +11,10 @@ func _on_BTN_PLAY_pressed():
 [node name="root" type="Node"]
 
 [node name="GAME_TITLE" type="Label" parent="."]
-offset_left = 95.0
-offset_top = 220.0
-offset_right = 376.0
-offset_bottom = 295.0
+offset_left = 179.0
+offset_top = 223.0
+offset_right = 460.0
+offset_bottom = 298.0
 text = "Saude do Coletivo"
 
 [node name="BTN_PLAY" type="Button" parent="."]

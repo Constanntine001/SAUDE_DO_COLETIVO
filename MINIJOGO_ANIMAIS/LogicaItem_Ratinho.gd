@@ -65,8 +65,6 @@ var ratinhoWave
 func RatinhoWave(ratinhoCoord):
 	var rect : Rect2 = Rect2(%MovementArea.global_position.x, %MovementArea.global_position.y, %MovementArea.global_scale.x, %MovementArea.global_scale.y)
 	
-	print("RatinhoWave!")
-	
 	#...Se tiver um area wave destroi e cria outro se não tiver só cria um area wave
 	# Sempre que o ratinho cair destruir o area_wave	
 	if rect.has_point(ratinhoCoord):

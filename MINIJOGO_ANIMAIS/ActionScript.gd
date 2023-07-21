@@ -30,7 +30,10 @@ func BrincarRatoChao():
 	var brinquedoRato = get_tree().get_nodes_in_group("brinquedo_rato")[0]
 	
 	await MovementScript.MoveGato(brinquedoRato.global_position)
-	brinquedoRato.queue_free()
+	
+	if brinquedoRato != null:
+		# Colocar uma função que adiciona stress no gatinho aqui <---------
+		brinquedoRato.queue_free()
 
 #[==========================]
 
@@ -45,9 +48,30 @@ func BrincarRatoWave():
 	var brinquedoRato = get_tree().get_nodes_in_group("area_wave")[0]
 	
 	await MovementScript.MoveGato(brinquedoRato.global_position)
-	brinquedoRato.queue_free()
+	if brinquedoRato != null:
+		# Colocar uma função que adiciona stress no gatinho aqui <---------
+		brinquedoRato.queue_free()
 
 #[==========================]
+
+#[Ação Come a ração avulsa coloada no chão(estilo caça)]
+
+"""
+	Essa ação acontece quando o jogador coloca uma ração avulsa no chão
+"""
+
+func ComerRacaoIndividual():
+	var racaoIndividual = get_tree().get_nodes_in_group("racao")[0]
+	
+	await MovementScript.MoveGato(racaoIndividual.global_position)
+	racaoIndividual.queue_free()
+	
+func ComerRacaoPote():
+	await MovementScript.MoveGato(%PotesComida.global_position)	
+	%PotesComida.esvaziarPote()
+
+#[==========================]
+
 
 #[Handler de Ações]
 
@@ -59,7 +83,7 @@ func BrincarRatoWave():
 @export var proximaAcao : PepinoActions
 @export var tempoEsperaAcoes : Vector2 = Vector2(3, 7)
 
-enum PepinoActions {MovimentoAleatorio, BrincarRatoChao, BrincarRatoWave}
+enum PepinoActions {MovimentoAleatorio, BrincarRatoChao, BrincarRatoWave, ComerRacaoIndividual, ComerRacaoPote}
 var pepinoAcaoAtual = PepinoActions.MovimentoAleatorio
 
 func _HandlerAcoes():
@@ -67,6 +91,10 @@ func _HandlerAcoes():
 		pepinoAcaoAtual = PepinoActions.BrincarRatoChao
 	elif(get_tree().get_nodes_in_group("area_wave").size() > 0):
 		pepinoAcaoAtual = PepinoActions.BrincarRatoWave
+	elif(get_tree().get_nodes_in_group("racao").size() > 0):
+		pepinoAcaoAtual = PepinoActions.ComerRacaoIndividual
+	elif(%PotesComida.getPoteState()):
+		pepinoAcaoAtual = PepinoActions.ComerRacaoPote
 	else:
 		pepinoAcaoAtual = PepinoActions.MovimentoAleatorio
 
@@ -83,8 +111,11 @@ func ExecutaAcaoAtual():
 			BrincarRatoWave()
 		PepinoActions.BrincarRatoChao:
 			BrincarRatoChao()
+		PepinoActions.ComerRacaoIndividual:
+			ComerRacaoIndividual()
+		PepinoActions.ComerRacaoPote:
+			ComerRacaoPote()
 			
-
 #[==========================]	
 
 func _ready():

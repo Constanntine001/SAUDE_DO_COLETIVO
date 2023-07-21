@@ -1,8 +1,5 @@
 res://default_env.tres
 res://MENU/MENU.tscn
 res://MINIJOGO_ANIMAIS/animais.tscn
-res://MINIJOGO_ANIMAIS/ratinho_suspenso.tscn
-res://MINIJOGO_ANIMAIS/ratinho_suspenso.gd
-res://MINIJOGO_ANIMAIS/LogicaItem_Ratinho.gd
-res://MINIJOGO_ANIMAIS/area_wave.tscn
+res://MINIJOGO_ANIMAIS/MovementScript.gd
 res://MINIJOGO_ANIMAIS/ActionScript.gd

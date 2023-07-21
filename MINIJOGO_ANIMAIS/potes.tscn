@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtjju0eayjaw0"]
+
+[ext_resource type="Texture2D" uid="uid://mljofhg1b3en" path="res://MINIJOGO_ANIMAIS/textures/agua_pote_vazio.png" id="1_aigum"]
+[ext_resource type="Texture2D" uid="uid://d2yrmphgb6weo" path="res://MINIJOGO_ANIMAIS/textures/comida_pote_cheio.png" id="2_g7pvr"]
+[ext_resource type="Texture2D" uid="uid://dq343idj3niup" path="res://MINIJOGO_ANIMAIS/textures/comida_pote_vazio.png" id="2_jdtlq"]
+[ext_resource type="Texture2D" uid="uid://5vtihan31j4q" path="res://MINIJOGO_ANIMAIS/textures/agua_pote_cheio.png" id="4_jkgvs"]
+
+[sub_resource type="GDScript" id="GDScript_sv6f4"]
+script/source = "extends Node2D
+
+var poteCheio = false
+
+func getPoteState():
+	return poteCheio
+
+func encherPote():
+	var spriteComidaCheio = $ComidaPote.get_meta(\"ComidaPoteCheio\")
+	var spriteAguaCheio = $AguaPote.get_meta(\"AguaPoteCheio\")
+	
+	$ComidaPote.texture = spriteComidaCheio
+	$AguaPote.texture = spriteAguaCheio
+	
+	poteCheio = true
+	
+func esvaziarPote():
+	var spriteComidaVazio = $ComidaPote.get_meta(\"ComidaPoteVazio\")
+	var spriteAguaVazio = $AguaPote.get_meta(\"AguaPoteVazio\")
+	
+	$ComidaPote.texture = spriteComidaVazio
+	$AguaPote.texture = spriteAguaVazio
+	
+	poteCheio = false
+
+
+
+"
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8uidu"]
+
+[node name="PotesComida" type="Node2D"]
+script = SubResource("GDScript_sv6f4")
+
+[node name="ComidaPote" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(32, 88)
+scale = Vector2(3.25, 3.25)
+texture = ExtResource("2_jdtlq")
+metadata/ComidaPoteCheio = ExtResource("2_g7pvr")
+metadata/ComidaPoteVazio = ExtResource("2_jdtlq")
+
+[node name="AguaPote" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(32, 32)
+scale = Vector2(3, 3)
+texture = ExtResource("1_aigum")
+metadata/AguaPoteCheio = ExtResource("4_jkgvs")
+metadata/AguaPoteVazio = ExtResource("1_aigum")
+
+[node name="FeedArea" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 1, 0.4, 0.309804)
+position = Vector2(-32, -32)
+scale = Vector2(128, 184)
+texture = SubResource("PlaceholderTexture2D_8uidu")
+centered = false

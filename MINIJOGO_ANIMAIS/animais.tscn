@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddwl5xmrm7xfl"]
+[gd_scene load_steps=12 format=3 uid="uid://ddwl5xmrm7xfl"]
 
 [ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/MovementScript.gd" id="1_j7hwa"]
+[ext_resource type="PackedScene" uid="uid://dtjju0eayjaw0" path="res://MINIJOGO_ANIMAIS/potes.tscn" id="1_jdho1"]
 [ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/ActionScript.gd" id="2_65xih"]
 [ext_resource type="Texture2D" uid="uid://b6s5rkx8aoi08" path="res://icon.png" id="3_mx4c7"]
 [ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/LogicaItem_Ratinho.gd" id="5_iadnv"]
 [ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/ArrastaItem.gd" id="5_kispl"]
+[ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/LogicaItemRacao.gd" id="6_m1lvf"]
 
 [sub_resource type="GDScript" id="1"]
 script/source = "extends Button
@@ -35,11 +37,15 @@ script = SubResource("1")
 unique_name_in_owner = true
 modulate = Color(0.443137, 0, 0.156863, 0.345098)
 z_index = -1337
-position = Vector2(17, 22)
-scale = Vector2(447, 626)
+position = Vector2(0, 22)
+scale = Vector2(480, 666)
 texture = SubResource("PlaceholderTexture2D_gneqd")
 centered = false
 metadata/_edit_lock_ = true
+
+[node name="PotesComida" parent="." instance=ExtResource("1_jdho1")]
+unique_name_in_owner = true
+position = Vector2(384, 512)
 
 [node name="PEPINO" type="Node2D" parent="."]
 position = Vector2(167, 276)
@@ -103,6 +109,20 @@ script = ExtResource("5_kispl")
 
 [node name="LogicaItem" type="Node" parent="CanvasLayer/Inventario/Panel/HBoxContainer/ITEM_RATINHO"]
 script = ExtResource("5_iadnv")
+
+[node name="ITEM_RACAO" type="TextureRect" parent="CanvasLayer/Inventario/Panel/HBoxContainer"]
+self_modulate = Color(0.776471, 0.415686, 1, 1)
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+texture = ExtResource("3_mx4c7")
+expand_mode = 2
+
+[node name="ArrastaItem" type="Node" parent="CanvasLayer/Inventario/Panel/HBoxContainer/ITEM_RACAO"]
+script = ExtResource("5_kispl")
+
+[node name="LogicaItem" type="Node" parent="CanvasLayer/Inventario/Panel/HBoxContainer/ITEM_RACAO"]
+script = ExtResource("6_m1lvf")
 
 [connection signal="pressed" from="EXIT_BUTTON" to="EXIT_BUTTON" method="_on_Button_pressed"]
 [connection signal="mouse_entered" from="PEPINO/Area2D" to="PEPINO/MovementScript" method="_on_area_2d_mouse_entered"]
