@@ -1,14 +1,16 @@
-extends Node
+extends Control
 
-var lista_cords = [1, 2, 3]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-   
 	pass
+
+
+func _on_play_button_button_down():
+	get_tree().change_scene_to_file("res://MINIJOGO_ARRUMANDOACASA/Game/Game.tscn")
+	pass # Replace with function body.

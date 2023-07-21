@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctcbpalngy63g"]
+
+[ext_resource type="Script" path="res://MINIJOGO_ARRUMANDOACASA/Menu/Menu.gd" id="1_023yn"]
+[ext_resource type="Texture2D" uid="uid://5yt5d3p48a25" path="res://MINIJOGO_ARRUMANDOACASA/Menu/Images/Play_Button.png" id="1_gxgrj"]
+[ext_resource type="Texture2D" uid="uid://hm0plc27n8qr" path="res://MINIJOGO_ARRUMANDOACASA/Menu/Images/Play_button_pressed.png" id="2_10so4"]
+[ext_resource type="Texture2D" uid="uid://cgscb526mx4d3" path="res://MINIJOGO_ARRUMANDOACASA/Menu/Images/Background.png" id="3_hf63b"]
+[ext_resource type="Texture2D" uid="uid://q3wlspayx27n" path="res://MINIJOGO_ARRUMANDOACASA/Menu/Images/Button_Tutorial.png" id="3_xfboq"]
+[ext_resource type="Texture2D" uid="uid://dvcrq3rb5jgy8" path="res://MINIJOGO_ARRUMANDOACASA/Menu/Images/Title.png" id="4_bbgf5"]
+[ext_resource type="Texture2D" uid="uid://c2ms3mhhg0rup" path="res://MINIJOGO_ARRUMANDOACASA/Menu/Images/Button_Tutorial_Pressed.png" id="4_mwk20"]
+[ext_resource type="Texture2D" uid="uid://b31jcxx7cy8iq" path="res://MINIJOGO_ARRUMANDOACASA/Menu/Images/Button_Sair.png" id="5_o0a4n"]
+[ext_resource type="Texture2D" uid="uid://dqkidluxloeic" path="res://MINIJOGO_ARRUMANDOACASA/Menu/Images/Button_Sair_Pressed.png" id="6_545ho"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_023yn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Play_button" type="TextureButton" parent="CanvasLayer"]
+offset_left = 67.0
+offset_top = 380.0
+offset_right = 427.0
+offset_bottom = 480.0
+texture_normal = ExtResource("1_gxgrj")
+texture_pressed = ExtResource("2_10so4")
+
+[node name="Tutorial_button" type="TextureButton" parent="CanvasLayer"]
+offset_left = 67.0
+offset_top = 502.0
+offset_right = 427.0
+offset_bottom = 602.0
+texture_normal = ExtResource("3_xfboq")
+texture_pressed = ExtResource("4_mwk20")
+
+[node name="Exit_button" type="TextureButton" parent="CanvasLayer"]
+offset_left = 67.0
+offset_top = 620.0
+offset_right = 427.0
+offset_bottom = 720.0
+texture_normal = ExtResource("5_o0a4n")
+texture_pressed = ExtResource("6_545ho")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 855.0
+texture = ExtResource("3_hf63b")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 480.0
+offset_bottom = 370.0
+texture = ExtResource("4_bbgf5")
+
+[connection signal="button_down" from="CanvasLayer/Play_button" to="." method="_on_play_button_button_down"]
