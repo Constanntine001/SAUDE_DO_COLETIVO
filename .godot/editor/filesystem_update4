@@ -3,3 +3,5 @@ res://MENU/MENU.tscn
 res://MINIJOGO_ANIMAIS/animais.tscn
 res://MINIJOGO_ANIMAIS/MovementScript.gd
 res://MINIJOGO_ANIMAIS/ActionScript.gd
+res://MINIJOGO_ANIMAIS/GestureHandler.tscn
+res://MINIJOGO_ANIMAIS/GestureHandler.gd

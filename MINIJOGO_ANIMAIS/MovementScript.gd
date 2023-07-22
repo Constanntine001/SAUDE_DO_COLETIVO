@@ -57,19 +57,12 @@ func _MoveGatoProcessHandler(delta):
 	
 #[=================]
 
-# [FUNÇÕES DE SEGURAR O GATINHO]
-
-
-
-
-# [============================]
-
 func _process(delta):
 	_MoveGatoProcessHandler(delta)
 	pass
 
 # Se o pepino está sendo carregado pelo jogador
-#var mouseInside = false
+
 #var dragging = false
 
 #func _ready():
@@ -91,10 +84,4 @@ func _process(delta):
 	# Vai ter uma função aqui quando eu lembrar rsrs
 #	pass
 
-# Se o mouse entrar na área do pepino
-#func _on_area_2d_mouse_entered():
-#	mouseInside = true
 
-# Se o mouse sair da área do pepino
-#func _on_area_2d_mouse_exited():
-#	mouseInside = false

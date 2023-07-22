@@ -1,8 +1,9 @@
 Sprite2D
+Timer
 CollisionShape2D
 Area2D
-Node
 Node2D
+Node
 StaticBody2D
 RigidBody2D
 PinJoint2D
@@ -12,4 +13,3 @@ HBoxContainer
 Panel
 ItemList
 CanvasLayer
-Timer

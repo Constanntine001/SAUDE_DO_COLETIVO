@@ -125,6 +125,4 @@ script = ExtResource("5_kispl")
 script = ExtResource("6_m1lvf")
 
 [connection signal="pressed" from="EXIT_BUTTON" to="EXIT_BUTTON" method="_on_Button_pressed"]
-[connection signal="mouse_entered" from="PEPINO/Area2D" to="PEPINO/MovementScript" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="PEPINO/Area2D" to="PEPINO/MovementScript" method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="PEPINO/MovementScript/Timer" to="PEPINO/MovementScript" method="_on_timer_timeout" flags=18]

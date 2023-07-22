@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cca6nprusugqg"]
+
+[ext_resource type="Script" path="res://MINIJOGO_ANIMAIS/GestureHandler.gd" id="1_ijg18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8f67"]
+size = Vector2(320, 224)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mf1gn"]
+
+[node name="GestureHandler" type="Node2D"]
+position = Vector2(88, 88)
+script = ExtResource("1_ijg18")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(160, 304)
+shape = SubResource("RectangleShape2D_i8f67")
+
+[node name="GestureTimer" type="Timer" parent="."]
+wait_time = 0.203
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(160, 304)
+scale = Vector2(298, 191.031)
+texture = SubResource("PlaceholderTexture2D_mf1gn")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
